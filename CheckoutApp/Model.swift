@@ -12,14 +12,11 @@ typealias Reducer = (_ state: State, _ action: Action) -> State
 
 // MARK: Redux model related protocols
 
-protocol Action {}
-
 protocol StoreSubscriber {
     func newState(_ state: State)
 }
 
 open class Store {
-    
     static let shared = Store()
     private(set) var state = State() {
         didSet {
@@ -50,10 +47,48 @@ open class Store {
     }
 }
 
+struct Action {
+    struct Increment {
+        let index: Int
+
+    }
+    
+    struct Decrement {
+        let index: Int
+        
+    }
+    
+    struct AddingToBasket {
+        let index: Int
+    }
+    
+    struct Checkout {
+        
+    }
+    
+    struct SelectingProduct {
+        let index: Int
+    
+    }
+}
+
 struct State {
-    let basket = Basket(products: [])
-    let fxRates: [String: Double] = [:]
-    let basketCount = 0
+    struct ViewState {
+        let selectedTab: Int
+        
+        struct ProductLister {
+            let selectedView: Int
+        }
+        
+        struct Checkout {
+        }
+    }
+    
+    struct  ModelState {
+        let basket = Basket(products: [])
+        let fxRates: [String: Double] = [:]
+        let basketCount = 0
+    }
 }
 
 struct Basket {
