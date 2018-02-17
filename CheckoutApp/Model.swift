@@ -141,13 +141,13 @@ enum Product {
     var imageName: String {
         switch  self {
         case .peas:
-            return ""
+            return "peas"
         case .eggs:
-            return ""
+            return "eggs"
         case .milk:
-            return ""
+            return "milk"
         case .beans:
-            return ""
+            return "beans"
         }
     }
 }
