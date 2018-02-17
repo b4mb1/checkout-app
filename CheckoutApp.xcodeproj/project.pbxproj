@@ -16,6 +16,8 @@
 		F916C5A1202EE8A300AF2024 /* CheckoutAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C5A0202EE8A300AF2024 /* CheckoutAppUITests.swift */; };
 		F916C5AF202EE94300AF2024 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C5AE202EE94300AF2024 /* Model.swift */; };
 		F916C5B6202F4D9F00AF2024 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C5B5202F4D9F00AF2024 /* Utils.swift */; };
+		F93138762038871700FD3372 /* ProductListerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93138742038871700FD3372 /* ProductListerCell.swift */; };
+		F93138772038871700FD3372 /* ProductListerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93138752038871700FD3372 /* ProductListerCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		F916C5AE202EE94300AF2024 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F916C5B0202EED6100AF2024 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F916C5B5202F4D9F00AF2024 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F93138742038871700FD3372 /* ProductListerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListerCell.swift; sourceTree = "<group>"; };
+		F93138752038871700FD3372 /* ProductListerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListerCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 			children = (
 				F916C580202EE8A300AF2024 /* AppDelegate.swift */,
 				F916C5AE202EE94300AF2024 /* Model.swift */,
+				F93138742038871700FD3372 /* ProductListerCell.swift */,
+				F93138752038871700FD3372 /* ProductListerCell.xib */,
 				F916C582202EE8A300AF2024 /* MainViewController.swift */,
 				F916C5B5202F4D9F00AF2024 /* Utils.swift */,
 				F916C584202EE8A300AF2024 /* Main.storyboard */,
@@ -242,6 +248,7 @@
 			files = (
 				F916C58B202EE8A300AF2024 /* LaunchScreen.storyboard in Resources */,
 				F916C588202EE8A300AF2024 /* Assets.xcassets in Resources */,
+				F93138772038871700FD3372 /* ProductListerCell.xib in Resources */,
 				F916C586202EE8A300AF2024 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +277,7 @@
 				F916C583202EE8A300AF2024 /* MainViewController.swift in Sources */,
 				F916C581202EE8A300AF2024 /* AppDelegate.swift in Sources */,
 				F916C5AF202EE94300AF2024 /* Model.swift in Sources */,
+				F93138762038871700FD3372 /* ProductListerCell.swift in Sources */,
 				F916C5B6202F4D9F00AF2024 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

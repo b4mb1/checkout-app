@@ -73,6 +73,7 @@ struct Action {
 }
 
 struct State {
+
     struct ViewState {
         let selectedTab: Int
         
@@ -91,26 +92,73 @@ struct State {
     }
 }
 
-struct Basket {
-    enum Product {
-        case peas(amount: Int)
-        case eggs(amount: Int)
-        case milk(amount: Int)
-        case beans(amount: Int)
-        
-        var price : Double {
-            switch  self {
-            case .peas:
-                return 0.95
-            case .eggs:
-                return 2.10
-            case .milk:
-                return 1.30
-            case .beans:
-                return 0.73
-            }
+enum Product {
+    case peas(amount: Int)
+    case eggs(amount: Int)
+    case milk(amount: Int)
+    case beans(amount: Int)
+    
+    var price : Double {
+        switch  self {
+        case .peas:
+            return 0.95
+        case .eggs:
+            return 2.10
+        case .milk:
+            return 1.30
+        case .beans:
+            return 0.73
         }
     }
     
+    var name: String {
+        switch self {
+        case .peas:
+            return "Peas"
+        case .eggs:
+            return "Eggs"
+        case .milk:
+            return "Milk"
+        case .beans:
+            return "Beans"
+        }
+    }
+    
+    //TODO: Localization
+    var per : String {
+        switch  self {
+        case .peas:
+            return "per 100 g"
+        case .eggs:
+            return "per 10"
+        case .milk:
+            return "each"
+        case .beans:
+            return "per 100 g"
+        }
+    }
+    
+    var imageName: String {
+        switch  self {
+        case .peas:
+            return ""
+        case .eggs:
+            return ""
+        case .milk:
+            return ""
+        case .beans:
+            return ""
+        }
+    }
+}
+
+struct Basket {
     let products: [Product]
+}
+
+struct ProductLister {
+    static let products: [Product] = [.peas(amount: 1),
+                               .milk(amount: 1),
+                               .eggs(amount: 1),
+                               .beans(amount: 1)]
 }
