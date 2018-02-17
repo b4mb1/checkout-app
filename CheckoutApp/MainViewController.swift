@@ -14,10 +14,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    func newState(state: State) {
-
-    }
     
+   
     /**
      store = Store()
      viewController.dispatch = store.dispatch
@@ -26,5 +24,11 @@ class MainViewController: UIViewController {
      
     */
     
+}
+
+extension MainViewController: StoreSubscriber {
+    func newState(_ state: State) {
+
+    }
 }
 

@@ -9,28 +9,30 @@
 import Foundation
 
 typealias Reducer = (_ state: State, _ action: Action) -> State
-typealias Subscription = (_ action: Action) -> ()
+
+// MARK: Redux model related protocols
 
 protocol Action {}
+
+protocol StoreSubscriber {
+    func newState(_ state: State)
+}
 
 open class Store {
     
     static let shared = Store()
     private(set) var state = State() {
         didSet {
-            //notify observers
 
-            /*for subscription in subscriptions {
-                subscription()
-            }
-             */
+            //notify observers
+            subscribers.forEach { $0.newState(state) }
         }
     }
     
     private var reducer: Reducer?
     private var isDispaching = false
 
-    var subscriptions: [Subscription] = []
+    var subscribers: [StoreSubscriber] = []
 
     func dispatch(action: Action) {
         
@@ -43,10 +45,9 @@ open class Store {
         state = reducer(self.state, action)
     }
     
-    func addSubscription(newSubscription: @escaping Subscription) {
-        subscriptions.append(newSubscription)
+    func addSubscriber(_ newSubscriber: StoreSubscriber) {
+        subscribers.append(newSubscriber)
     }
-
 }
 
 struct State {
