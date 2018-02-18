@@ -10,6 +10,7 @@
 		F914ED942038FCCC000ED4DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED932038FCCC000ED4DF /* Constants.swift */; };
 		F914ED9620398A59000ED4DF /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED9520398A59000ED4DF /* CustomNavigationController.swift */; };
 		F914ED982039AB05000ED4DF /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED972039AB05000ED4DF /* BasketViewController.swift */; };
+		F914ED9A2039CC06000ED4DF /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED992039CC06000ED4DF /* APIModel.swift */; };
 		F916C581202EE8A300AF2024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C580202EE8A300AF2024 /* AppDelegate.swift */; };
 		F916C583202EE8A300AF2024 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C582202EE8A300AF2024 /* MainViewController.swift */; };
 		F916C586202EE8A300AF2024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F916C584202EE8A300AF2024 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		F914ED932038FCCC000ED4DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F914ED9520398A59000ED4DF /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		F914ED972039AB05000ED4DF /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		F914ED992039CC06000ED4DF /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
 		F916C57D202EE8A300AF2024 /* CheckoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F916C580202EE8A300AF2024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F916C582202EE8A300AF2024 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				F916C580202EE8A300AF2024 /* AppDelegate.swift */,
 				F916C5AE202EE94300AF2024 /* Model.swift */,
 				F914ED932038FCCC000ED4DF /* Constants.swift */,
+				F914ED992039CC06000ED4DF /* APIModel.swift */,
 				F93138742038871700FD3372 /* ProductListerCell.swift */,
 				F914ED972039AB05000ED4DF /* BasketViewController.swift */,
 				F914ED9520398A59000ED4DF /* CustomNavigationController.swift */,
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F916C583202EE8A300AF2024 /* MainViewController.swift in Sources */,
+				F914ED9A2039CC06000ED4DF /* APIModel.swift in Sources */,
 				F916C581202EE8A300AF2024 /* AppDelegate.swift in Sources */,
 				F916C5AF202EE94300AF2024 /* Model.swift in Sources */,
 				F93138762038871700FD3372 /* ProductListerCell.swift in Sources */,
