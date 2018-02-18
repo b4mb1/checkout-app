@@ -21,10 +21,10 @@ class ProductListerCell: UICollectionViewCell {
                 return
             }
             
-            image.image = UIImage(named: product.imageName)
-            price.text = "\(product.price)"
-            name.text = product.name
-            extra.text = product.per
+            image?.image = UIImage(named: product.imageName)
+            price?.text = "\(product.price)"
+            name?.text = product.name
+            extra?.text = product.per
         }
     }
 
