@@ -34,13 +34,26 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnA-Wk-mZZ" userLabel="AddToBasket">
-                        <rect key="frame" x="0.0" y="236" width="150" height="26"/>
+                        <rect key="frame" x="0.0" y="236" width="40" height="26"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="40" id="aNa-1p-995"/>
                             <constraint firstAttribute="height" constant="26" id="eG9-5f-OZd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
-                        <state key="normal" title="Add to basket">
+                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="24"/>
+                        <state key="normal" title="+">
                             <color key="titleColor" red="0.8901960784313725" green="0.18431372549019609" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleShadowColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrO-rh-Iu4" userLabel="RemoveFromBasket">
+                        <rect key="frame" x="110" y="236" width="40" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="2Uz-a1-cD8"/>
+                            <constraint firstAttribute="height" constant="26" id="61r-Fk-oCn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="23"/>
+                        <state key="normal" title="-">
+                            <color key="titleColor" red="0.89019607840000003" green="0.1843137255" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="titleShadowColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
@@ -67,8 +80,16 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7l-gr-gu9">
+                        <rect key="frame" x="40" y="236" width="70" height="20"/>
+                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="r7l-gr-gu9" firstAttribute="top" secondItem="cnA-Wk-mZZ" secondAttribute="top" id="8m8-Au-Qzm"/>
+                    <constraint firstItem="NrO-rh-Iu4" firstAttribute="top" secondItem="cnA-Wk-mZZ" secondAttribute="top" id="C4b-bw-Av4"/>
                     <constraint firstItem="cnA-Wk-mZZ" firstAttribute="leading" secondItem="u7s-NT-5bC" secondAttribute="leading" id="EgT-wT-SvI"/>
                     <constraint firstItem="T4t-ba-nfr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IKI-4p-43d"/>
                     <constraint firstItem="u7s-NT-5bC" firstAttribute="trailing" secondItem="T4t-ba-nfr" secondAttribute="trailing" id="Mxh-nW-z5N"/>
@@ -76,18 +97,23 @@
                     <constraint firstAttribute="bottomMargin" secondItem="cnA-Wk-mZZ" secondAttribute="bottom" constant="-3" id="WuV-gu-EHY"/>
                     <constraint firstItem="u7s-NT-5bC" firstAttribute="top" secondItem="T4t-ba-nfr" secondAttribute="bottom" constant="7" id="aX3-kZ-ONm"/>
                     <constraint firstItem="u7s-NT-5bC" firstAttribute="leading" secondItem="T4t-ba-nfr" secondAttribute="leading" id="aiG-4d-mA4"/>
+                    <constraint firstItem="NrO-rh-Iu4" firstAttribute="trailing" secondItem="u7s-NT-5bC" secondAttribute="trailing" id="bIr-Fs-jyA"/>
+                    <constraint firstItem="NrO-rh-Iu4" firstAttribute="leading" secondItem="r7l-gr-gu9" secondAttribute="trailing" id="nJP-Pc-fZ4"/>
                     <constraint firstAttribute="trailing" secondItem="T4t-ba-nfr" secondAttribute="trailing" id="q2q-FC-iJL"/>
                     <constraint firstItem="cnA-Wk-mZZ" firstAttribute="top" secondItem="u7s-NT-5bC" secondAttribute="bottom" constant="5" id="qoO-XZ-RkQ"/>
-                    <constraint firstItem="cnA-Wk-mZZ" firstAttribute="trailing" secondItem="u7s-NT-5bC" secondAttribute="trailing" id="xNr-RA-xVu"/>
+                    <constraint firstItem="r7l-gr-gu9" firstAttribute="leading" secondItem="cnA-Wk-mZZ" secondAttribute="trailing" id="vK2-ZT-C0n"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addToBasket" destination="NrO-rh-Iu4" id="avc-Ar-omN"/>
                 <outlet property="extra" destination="7Ee-Jn-X0P" id="mc7-Xi-P92"/>
                 <outlet property="image" destination="T4t-ba-nfr" id="qhE-Wa-ky4"/>
                 <outlet property="name" destination="7xG-Em-NYn" id="A0e-nn-vUj"/>
                 <outlet property="price" destination="C3x-oa-O8M" id="hGf-0e-5XX"/>
+                <outlet property="quantity" destination="r7l-gr-gu9" id="hhG-f1-Uhi"/>
+                <outlet property="removeFromBasket" destination="cnA-Wk-mZZ" id="zu2-p3-fUt"/>
             </connections>
         </tableViewCell>
     </objects>

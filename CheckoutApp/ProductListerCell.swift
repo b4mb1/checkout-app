@@ -14,17 +14,20 @@ class ProductListerCell: UICollectionViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var extra: UILabel!
+    @IBOutlet weak var addToBasket: UIButton!
+    @IBOutlet weak var removeFromBasket: UIButton!
+    @IBOutlet weak var quantity: UILabel!
     
     var product: Product? {
         didSet {
-            guard let product = product else {
-                return
+
+            if let Product.beans(amount: Int) = product {
+                image?.image = UIImage(named: product.imageName)
+                price?.text = "\(product.price)"
+                name?.text = product.name
+                extra?.text = product.per
+                quantity?.text = amount
             }
-            
-            image?.image = UIImage(named: product.imageName)
-            price?.text = "\(product.price)"
-            name?.text = product.name
-            extra?.text = product.per
         }
     }
 
