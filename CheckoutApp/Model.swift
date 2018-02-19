@@ -16,92 +16,83 @@ protocol StoreSubscriber {
     func newState(_ state: State)
 }
 
-open class Store {
-    static let shared = Store()
-    private(set) var state = State() {
-        didSet {
 
-            //notify observers
-            subscribers.forEach { $0.newState(state) }
+func basketWithItem(basket: [ShoppingItem], newItem: ShoppingItem, atIndex: Int) -> [ShoppingItem] {
+    return basket.enumerated().map{ (offset: Int, item: ShoppingItem) -> ShoppingItem in
+        if (offset == atIndex) {
+            return newItem
+        } else {
+            return item
         }
     }
-    
-    private var reducer: Reducer?
-    private var isDispaching = false
+}
 
-    var subscribers: [StoreSubscriber] = []
+func updateBasket(state: State, index: Int, qty: Int) -> State {
+    let basketItem = state.basket[index]
+    let newItem = ShoppingItem(product: basketItem.product,
+                               quantity: basketItem.quantity + qty)
+    let newBasket = basketWithItem(basket: state.basket, newItem: newItem, atIndex: index)
+    return State(basket: newBasket, fxRates: state.fxRates)
+}
+
+
+func theReducer(state: State, action: Action) -> State  {
+    switch action {
+    case .Increment(let index):
+        return updateBasket(state: state, index: index, qty: 1)
+    case .Decrement(let index):
+        return updateBasket(state: state, index: index, qty: -1)
+    case.UpdateRates(let newFxRates):
+        return State(basket: state.basket, fxRates: newFxRates)
+    }
+}
+
+func defaultState() -> State {
+    return State(basket: ProductLister.items, fxRates: [:])
+}
+
+
+class Store {
+    private var reducer: Reducer
+    private(set) var state: State {
+        didSet { propagate() }
+    }
     
-    // let reducer: Reducer = { state, action in
-    //     switch action {
-    //     case Increment: reduceIncrement(state)
-    //
-    //     }
-    //
-    //     return self.state
-    // }
+    var subscribers: [StoreSubscriber] = []
+
+    static let shared = Store()
+
+    private init() {
+        self.reducer = theReducer
+        self.state = defaultState()
+    }
 
     func dispatch(action: Action) {
-        
-        // It doesnt have to be weakified,
-        // store stays in the memory for whole app lifetime
-
-       // state = reducer(self.state, action)
+        state = reducer(state, action)
     }
     
-    func addSubscriber(_ newSubscriber: StoreSubscriber) {
+    func subscribe(_ newSubscriber: StoreSubscriber) {
         subscribers.append(newSubscriber)
     }
+    
+    func propagate() {
+        subscribers.forEach { $0.newState(state) }
+    }
 }
 
-/*func reduceIncrement(state) = {
-    new_state = state.copy()
-    new_state.ModelState[index].qty += 1
-}
-
-*/
- 
-struct Action {
-    struct Increment {
-        let index: Int
-
-    }
-    
-    struct Decrement {
-        let index: Int
-        
-    }
-    
-    struct AddingToBasket {
-        let index: Int
-    }
-    
-    struct Checkout {
-        
-    }
-    
-    struct SelectingProduct {
-        let index: Int
-    
-    }
+enum Action {
+    case Increment(index: Int)
+    case Decrement(index: Int)
+    case UpdateRates(rates: [String:Double])
 }
 
 struct State {
-
-    struct ViewState {
-        let selectedTab: Int
-        
-        struct ProductLister {
-            let selectedView: Int
-        }
-        
-        struct Checkout {
-        }
-    }
+    let basket: [ShoppingItem]
+    let fxRates: [String: Double]
     
-    struct  ModelState {
-        let basket = Basket(products: [])
-        let fxRates: [String: Double] = [:]
-        let basketCount = 0
+    init(basket: [ShoppingItem], fxRates: [String:Double]) {
+        self.basket = basket
+        self.fxRates = fxRates
     }
 }
 
@@ -114,41 +105,28 @@ enum Product {
 
     var price : Double {
         switch  self {
-        case .peas:
-            return 0.95
-        case .eggs:
-            return 2.10
-        case .milk:
-            return 1.30
-        case .beans:
-            return 0.73
+        case .peas: return 0.95
+        case .eggs: return 2.10
+        case .milk: return 1.30
+        case .beans: return 0.73
         }
     }
     
     var name: String {
         switch self {
-        case .peas:
-            return "peas"
-        case .eggs:
-            return "eggs"
-        case .milk:
-            return "milk"
-        case .beans:
-            return "beans"
+        case .peas: return "peas"
+        case .eggs: return "eggs"
+        case .milk: return "milk"
+        case .beans: return "beans"
         }
     }
     
-    //TODO: Localization
     var per : String {
         switch  self {
-        case .peas:
-            return "per 100 g"
-        case .eggs:
-            return "per 10"
-        case .milk:
-            return "each"
-        case .beans:
-            return "per 100 g"
+        case .peas: return "per 100 g"
+        case .eggs: return "per 10"
+        case .milk: return "each"
+        case .beans: return "per 100 g"
         }
     }
 }
@@ -164,13 +142,9 @@ struct ShoppingItem {
     }
 }
 
-struct Basket {
-    let products: [ShoppingItem]
-}
-
 struct ProductLister {
     static let items: [ShoppingItem] = [ShoppingItem(product: .beans),
-                                           ShoppingItem(product: .eggs),
-                                           ShoppingItem(product: .milk),
-                                           ShoppingItem(product: .peas)]
+                                        ShoppingItem(product: .eggs),
+                                        ShoppingItem(product: .milk),
+                                        ShoppingItem(product: .peas)]
 }

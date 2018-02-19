@@ -16,6 +16,11 @@ class BasketViewController: UIViewController {
         super.viewDidLoad()
         configureDropDown()
         configurePickerView()
+        setupStore()
+        
+        DataProvider.shared.fetchRatesFor( , completionHandler: <#T##(ExchangeRates?, Error?) -> Void#>) {
+            
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -28,7 +33,6 @@ class BasketViewController: UIViewController {
         super.viewWillAppear(animated)
         animateBasketButton(isAppearing: false)
     }
- 
 
     private func configurePickerView() {
         guard let pickerView = currencyDropDown.expandedView as? PickerView else {
@@ -43,6 +47,11 @@ class BasketViewController: UIViewController {
     
     private func configureDropDown() {
         currencyDropDown.delegate = self
+    }
+    
+    private func setupStore(){
+        let store = Store.shared
+        store.subscribe(self)
     }
     
     private func currencyDidChange(_ currency: String, row: Int) {

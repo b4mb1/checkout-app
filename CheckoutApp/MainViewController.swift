@@ -10,30 +10,38 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak private var collectionView: UICollectionView!
+    
+    var dispatch: ((Action) -> ())!
 
-    fileprivate let columnCount: CGFloat = 2
-    fileprivate let sectionInsets = UIEdgeInsets(top: 20.0,
+    private var shoppingItems: [ShoppingItem]?
+    private let columnCount: CGFloat = 2
+    private let sectionInsets = UIEdgeInsets(top: 20.0,
                                                  left: 10.0,
                                                  bottom: 10.0,
                                                  right: 10.0)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
     }
-
-    /**
-     store = Store()
-     viewController.dispatch = store.dispatch
-     store.registerObserver(viewController.render)
-     
-    */
-
+    
+    @objc func AddToBaksetTapped(_ sender: UIButton) {
+        let row = sender.tag
+        dispatch(Action.Increment(index: row))
+    }
+    
+    @objc func RemoveFromBaksetTapped(_ sender: UIButton) {
+        let row = sender.tag
+        dispatch(Action.Decrement(index: row))
+    }
 }
 
 extension MainViewController: StoreSubscriber {
     func newState(_ state: State) {
-
+        print("new state passed")
+        
+        shoppingItems = state.basket
+        collectionView?.reloadData()
     }
 }
 
@@ -54,17 +62,18 @@ extension MainViewController: UICollectionViewDelegate {
     }
 }
 
+
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         
-        return ProductLister.items.count
+        return shoppingItems?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let item =  ProductLister.items[safe:indexPath.row],
+        guard let item =  shoppingItems?[safe:indexPath.row],
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductListerCell.identifier,
                                                           for: indexPath) as? ProductListerCell else {
                                                             
@@ -72,6 +81,11 @@ extension MainViewController: UICollectionViewDataSource {
         }
         
         cell.item = item
+        cell.removeFromBasket.tag = indexPath.row
+        cell.removeFromBasket.addTarget(self, action: #selector(RemoveFromBaksetTapped(_:)), for: .touchUpInside)
+        cell.addToBasket.tag = indexPath.row
+        cell.addToBasket.addTarget(self, action: #selector(AddToBaksetTapped(_:)), for: .touchUpInside)
+        
         return cell
     }
 }
