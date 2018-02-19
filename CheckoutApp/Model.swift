@@ -106,11 +106,11 @@ struct State {
 }
 
 enum Product {
-    case peas(amount: Int)
-    case eggs(amount: Int)
-    case milk(amount: Int)
-    case beans(amount: Int)
-    
+
+    case peas
+    case eggs
+    case milk
+    case beans
 
     var price : Double {
         switch  self {
@@ -128,13 +128,13 @@ enum Product {
     var name: String {
         switch self {
         case .peas:
-            return "Peas"
+            return "peas"
         case .eggs:
-            return "Eggs"
+            return "eggs"
         case .milk:
-            return "Milk"
+            return "milk"
         case .beans:
-            return "Beans"
+            return "beans"
         }
     }
     
@@ -151,28 +151,26 @@ enum Product {
             return "per 100 g"
         }
     }
+}
+
+struct ShoppingItem {
     
-    var imageName: String {
-        switch  self {
-        case .peas:
-            return "peas"
-        case .eggs:
-            return "eggs"
-        case .milk:
-            return "milk"
-        case .beans:
-            return "beans"
-        }
+    let product: Product
+    let quantity: Int
+    
+    init(product: Product, quantity: Int = 0) {
+        self.product = product
+        self.quantity = quantity
     }
 }
 
 struct Basket {
-    let products: [Product]
+    let products: [ShoppingItem]
 }
 
 struct ProductLister {
-    static let products: [Product] = [.peas(amount: 1),
-                               .milk(amount: 1),
-                               .eggs(amount: 1),
-                               .beans(amount: 1)]
+    static let items: [ShoppingItem] = [ShoppingItem(product: .beans),
+                                           ShoppingItem(product: .eggs),
+                                           ShoppingItem(product: .milk),
+                                           ShoppingItem(product: .peas)]
 }

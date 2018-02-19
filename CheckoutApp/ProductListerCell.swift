@@ -18,16 +18,18 @@ class ProductListerCell: UICollectionViewCell {
     @IBOutlet weak var removeFromBasket: UIButton!
     @IBOutlet weak var quantity: UILabel!
     
-    var product: Product? {
+    var item: ShoppingItem? {
         didSet {
-
-            if let Product.beans(amount: Int) = product {
-                image?.image = UIImage(named: product.imageName)
-                price?.text = "\(product.price)"
-                name?.text = product.name
-                extra?.text = product.per
-                quantity?.text = amount
+            guard let product = item?.product,
+            let quantity = item?.quantity else {
+                return
             }
+            
+            image?.image = UIImage(named: product.name)
+            price?.text = "\(product.price)"
+            name?.text = product.name.uppercased()
+            extra?.text = product.per
+            self.quantity?.text = "\(quantity)"
         }
     }
 

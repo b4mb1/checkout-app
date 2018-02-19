@@ -58,20 +58,20 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         
-        return ProductLister.products.count
+        return ProductLister.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let product =  ProductLister.products[safe:indexPath.row],
+        guard let item =  ProductLister.items[safe:indexPath.row],
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductListerCell.identifier,
                                                           for: indexPath) as? ProductListerCell else {
                                                             
                 return UICollectionViewCell()
         }
         
-        cell.product = product
+        cell.item = item
         return cell
     }
 }
