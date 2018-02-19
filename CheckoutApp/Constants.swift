@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     
@@ -15,7 +16,7 @@ struct Constants {
         static let key = "access_key"
         static let keyValue = "772e8f137945688b635343c327107d9a"
         static let curr = "currencies"
-        static let currValue = "EUR,GBP,CAD,PLN,CHF,AUD,JPY,BRL,INR,ARS"
+        static let currValue = "ARS,AUD,BRL,CAD,CHF,EUR,GBP,INR,JPY,PLN"
         static let source = "source"
         static let sourceValue = "USD"
         static let format = "format"
@@ -35,4 +36,7 @@ struct Constants {
     struct Storyboards {
         static let main = "Main"
     }
+    
+    static let animationDuration = 0.3
+    static let borderThickness: CGFloat = 0.5
 }

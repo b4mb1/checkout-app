@@ -38,3 +38,13 @@ extension Collection {
     }
 }
 
+struct Formatter {
+    static func currencyFormatter(locale: Locale = Locale(identifier: "en_US")) -> NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.locale = locale
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = locale.currencySymbol
+        return formatter
+    }
+}
+

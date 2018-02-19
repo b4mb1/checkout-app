@@ -9,6 +9,12 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GillSans.ttc">
+            <string>GillSans</string>
+            <string>GillSans-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Custom Navigation Controller-->
         <scene sceneID="EVe-Pn-mRQ">
@@ -87,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="107" y="131"/>
         </scene>
         <!--Basket View Controller-->
         <scene sceneID="Qy7-4V-5E9">
@@ -96,13 +102,134 @@
                     <view key="view" contentMode="scaleToFill" id="rX1-A0-qEa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-Iy-sdw" userLabel="Text Field Arrow">
+                                <rect key="frame" x="285" y="237.5" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="6Ja-r9-Lkx"/>
+                                    <constraint firstAttribute="height" constant="15" id="xeG-6G-qFW"/>
+                                </constraints>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Qz-my-Kj5" customClass="PickerView" customModule="CheckoutApp" customModuleProvider="target">
+                                <rect key="frame" x="15" y="263" width="290" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="2EB-Fy-stc"/>
+                                </constraints>
+                            </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose currency" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gK0-4i-ZXv" userLabel="Currencies Text Field" customClass="DropDownTextField" customModule="CheckoutApp" customModuleProvider="target">
+                                <rect key="frame" x="15" y="227" width="290" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="1To-fZ-ggp"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="arrow" destination="Ges-Iy-sdw" id="dwX-gK-dVN"/>
+                                    <outlet property="containerHeightConstraint" destination="2EB-Fy-stc" id="wnd-Nj-ecH"/>
+                                    <outlet property="expandedView" destination="5Qz-my-Kj5" id="12D-2H-RS2"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ8-4v-1sE">
+                                <rect key="frame" x="15" y="518" width="290" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MUr-0S-OiI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Checkout">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" axis="vertical" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Oau-1o-2mA" userLabel="Left Stack View">
+                                <rect key="frame" x="15" y="60" width="242.5" height="101"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lof-zV-z1P">
+                                        <rect key="frame" x="0.0" y="0.0" width="242.5" height="41"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Shipping cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RC-BJ-HWJ">
+                                        <rect key="frame" x="0.0" y="21" width="242.5" height="60"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjT-rm-uKb">
+                                        <rect key="frame" x="0.0" y="61" width="242.5" height="40"/>
+                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5RC-BJ-HWJ" firstAttribute="centerY" secondItem="Oau-1o-2mA" secondAttribute="centerY" id="Fl2-Bi-jPT"/>
+                                    <constraint firstAttribute="bottom" secondItem="5RC-BJ-HWJ" secondAttribute="bottom" constant="20" symbolic="YES" id="G1a-26-ILV"/>
+                                    <constraint firstItem="hjT-rm-uKb" firstAttribute="top" secondItem="Lof-zV-z1P" secondAttribute="bottom" constant="20" id="q1I-i1-xYd"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="gWX-nv-SLT" userLabel="Right Stack View">
+                                <rect key="frame" x="267.5" y="60" width="37.5" height="101"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcE-xc-yMF">
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="41"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gratis" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYe-yv-hmC">
+                                        <rect key="frame" x="0.0" y="21" width="37.5" height="60"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-yR-I7C">
+                                        <rect key="frame" x="0.0" y="61" width="37.5" height="40"/>
+                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="iYe-yv-hmC" firstAttribute="centerY" secondItem="gWX-nv-SLT" secondAttribute="centerY" id="rkX-3P-OgW"/>
+                                    <constraint firstAttribute="bottom" secondItem="iYe-yv-hmC" secondAttribute="bottom" constant="20" symbolic="YES" id="wLI-mR-STh"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Qz-my-Kj5" firstAttribute="top" secondItem="gK0-4i-ZXv" secondAttribute="bottom" id="6Wg-Ic-ksg"/>
+                            <constraint firstItem="5Qz-my-Kj5" firstAttribute="leading" secondItem="gK0-4i-ZXv" secondAttribute="leading" id="7vC-uS-lhu"/>
+                            <constraint firstItem="5Qz-my-Kj5" firstAttribute="trailing" secondItem="gK0-4i-ZXv" secondAttribute="trailing" id="C69-jb-Feq"/>
+                            <constraint firstItem="gK0-4i-ZXv" firstAttribute="leading" secondItem="ffA-s6-DoH" secondAttribute="leading" constant="15" id="Eqn-Fv-KYl"/>
+                            <constraint firstItem="Oau-1o-2mA" firstAttribute="top" secondItem="ffA-s6-DoH" secondAttribute="top" constant="40" id="JIi-hj-gdP"/>
+                            <constraint firstItem="gWX-nv-SLT" firstAttribute="top" secondItem="Oau-1o-2mA" secondAttribute="top" id="MI8-ZI-Ycy"/>
+                            <constraint firstItem="gK0-4i-ZXv" firstAttribute="trailing" secondItem="Ges-Iy-sdw" secondAttribute="trailing" constant="5" id="NMl-Cc-bIG"/>
+                            <constraint firstItem="AJ8-4v-1sE" firstAttribute="leading" secondItem="ffA-s6-DoH" secondAttribute="leading" constant="15" id="Pxx-DU-Lnx"/>
+                            <constraint firstItem="Oau-1o-2mA" firstAttribute="bottom" secondItem="gWX-nv-SLT" secondAttribute="bottom" id="WFj-Rp-13X"/>
+                            <constraint firstItem="gWX-nv-SLT" firstAttribute="leading" secondItem="Oau-1o-2mA" secondAttribute="trailing" constant="10" id="YCz-j2-g04"/>
+                            <constraint firstItem="ffA-s6-DoH" firstAttribute="trailing" secondItem="gK0-4i-ZXv" secondAttribute="trailing" constant="15" id="YzO-F4-f0H"/>
+                            <constraint firstItem="ffA-s6-DoH" firstAttribute="trailing" secondItem="gWX-nv-SLT" secondAttribute="trailing" constant="15" id="aJn-Gg-E4r"/>
+                            <constraint firstItem="Ges-Iy-sdw" firstAttribute="centerY" secondItem="gK0-4i-ZXv" secondAttribute="centerY" id="ajs-Cd-PR0"/>
+                            <constraint firstItem="Oau-1o-2mA" firstAttribute="leading" secondItem="ffA-s6-DoH" secondAttribute="leading" constant="15" id="jcg-co-bzM"/>
+                            <constraint firstItem="gK0-4i-ZXv" firstAttribute="top" secondItem="Oau-1o-2mA" secondAttribute="bottom" constant="66" id="kbf-ZD-Bbu"/>
+                            <constraint firstItem="ffA-s6-DoH" firstAttribute="bottom" secondItem="AJ8-4v-1sE" secondAttribute="bottom" constant="10" id="qB6-Tg-247"/>
+                            <constraint firstItem="ffA-s6-DoH" firstAttribute="trailing" secondItem="AJ8-4v-1sE" secondAttribute="trailing" constant="15" id="yOi-2A-YA2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ffA-s6-DoH"/>
                     </view>
+                    <connections>
+                        <outlet property="currencyDropDown" destination="gK0-4i-ZXv" id="q2P-jG-gE5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yex-9b-N5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="137"/>
+            <point key="canvasLocation" x="857" y="131"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="25" height="25"/>
+    </resources>
 </document>

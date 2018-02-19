@@ -84,9 +84,9 @@ class CustomNavigationController: UINavigationController {
     }
     
     @objc func basketTapped() {
+        basketButton?.isHidden = true
         let basketViewController = UIStoryboard(name: Constants.Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: BasketViewController.identifier)
         self.pushViewController(basketViewController, animated: true)
-    
     }
     
     @objc func backButtonTapped() {
@@ -95,13 +95,13 @@ class CustomNavigationController: UINavigationController {
     
     // MARK: methods with internal access level
     
-    internal func hideBasketButton() {
+    internal func animateBasketButton(isAppearing: Bool) {
         guard let button = basketButton else {
             return
         }
         
         UIView.transition(with: button, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            button.isHidden = true
+            button.isHidden = !isAppearing
         })
     }
 }
@@ -113,8 +113,6 @@ extension CustomNavigationController: UINavigationControllerDelegate {
                               animated: Bool) {
        
         backButton?.isHidden = false
-        basketButton?.isHidden = false
-        
         installBasketButtonOn(viewController)
         
         guard navigationController.viewControllers.count > 1 else {

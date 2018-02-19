@@ -11,27 +11,13 @@ import Foundation
 struct ExchangeRates: Codable {
     let success: Bool
     let source: String
-    let quotes: Quotes
+    let quotes: [String:Double]
     
     enum CodingKeys: String, CodingKey {
         case success
         case source
         case quotes
     }
-}
-
-//API has hardocded keys in JSON...
-
-struct Quotes: Codable {
-    let USDEUR: Double
-    let USDGBP: Double
-    let USDCAD: Double
-    let USDPLN: Double
-    let USDCHF: Double
-    let USDINR: Double
-    let USDBRL: Double
-    let USDJPY: Double
-    let USDARS: Double
 }
 
 struct APIError: Codable {

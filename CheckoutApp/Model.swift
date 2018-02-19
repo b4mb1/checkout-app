@@ -30,16 +30,22 @@ open class Store {
     private var isDispaching = false
 
     var subscribers: [StoreSubscriber] = []
+    
+    // let reducer: Reducer = { state, action in
+    //     switch action {
+    //     case Increment: reduceIncrement(state)
+    //
+    //     }
+    //
+    //     return self.state
+    // }
 
     func dispatch(action: Action) {
         
         // It doesnt have to be weakified,
         // store stays in the memory for whole app lifetime
-        let reducer: Reducer = { _,_ in
-            return self.state
-        }
-        
-        state = reducer(self.state, action)
+
+       // state = reducer(self.state, action)
     }
     
     func addSubscriber(_ newSubscriber: StoreSubscriber) {
@@ -47,6 +53,13 @@ open class Store {
     }
 }
 
+/*func reduceIncrement(state) = {
+    new_state = state.copy()
+    new_state.ModelState[index].qty += 1
+}
+
+*/
+ 
 struct Action {
     struct Increment {
         let index: Int
@@ -98,6 +111,7 @@ enum Product {
     case milk(amount: Int)
     case beans(amount: Int)
     
+
     var price : Double {
         switch  self {
         case .peas:
