@@ -34,7 +34,7 @@ func updateBasket(state: State, index: Int, qty: Int) -> State {
     let newItem = ShoppingItem(product: basketItem.product,
                                quantity: cappedQty)
     let newBasket = basketWithItem(basket: state.basket, newItem: newItem, atIndex: index)
-    return State(basket: newBasket, fxRates: state.fxRates)
+    return State(basket: newBasket, fxRates: state.fxRates, currency: state.currency)
 }
 
 
@@ -45,15 +45,15 @@ func theReducer(state: State, action: Action) -> State  {
     case .Decrement(let index):
         return updateBasket(state: state, index: index, qty: -1)
     case .UpdateRates(let newFxRates):
-        return State(basket: state.basket, fxRates: newFxRates)
+        return State(basket: state.basket, fxRates: newFxRates, currency: state.currency)
     case .SelectCurrency(let currency):
-        return State(basket: state.basket, fxRates: state.fxRates, selectedCurrency: currency)
+        return State(basket: state.basket, fxRates: state.fxRates, currency: currency)
         
     }
 }
 
 func defaultState() -> State {
-    return State(basket: ProductLister.items, fxRates: ["USDUSD":1.0])
+    return State(basket: ProductLister.items, fxRates: ["USDUSD":1.0], currency: "USD")
 }
 
 
@@ -93,34 +93,62 @@ enum Action {
 }
 
 struct State {
+    // inputs
     let basket: [ShoppingItem]
+    
+    let availableCurrencies: [String]
+    let totalPrice: Double
+    let totalPriceString: String
     let fxRates: [String: Double]
-    let prices: [String: Double]
-    let currentPrice: String
-
-    init(basket: [ShoppingItem], fxRates: [String:Double], selectedCurrency: String = "USD") {
+    
+    let currency: String
+    let fxRate: Double
+    let priceBreakdown: [String: String]
+    
+    init(basket: [ShoppingItem], fxRates: [String:Double], currency: String) {
         self.basket = basket
+        self.currency = currency
         self.fxRates = fxRates
-        self.prices = State.calculatePrices(basket: basket, fxRates: fxRates)
-        let price = prices[selectedCurrency] ?? State.calculateUSDTotal(basket: basket)
-        self.currentPrice = State.formatPrice(price: price, currencyCode: selectedCurrency)
+        self.fxRate = fxRates["USD" + currency] ?? 1.0
+        
+        self.availableCurrencies = Array(fxRates.keys.map{String($0.dropFirst(3))}).sorted()
+
+        self.totalPrice = State.calculateTotal(basket: self.basket, fxRate: self.fxRate)
+        self.totalPriceString = State.formatPrice(price: self.totalPrice, currencyCode: self.currency)
+        
+        self.priceBreakdown = State.calculatePriceBreakdown(basket: self.basket, fxRate: self.fxRate, currencyCode: self.currency)
     }
     
-    //  calculate total price for items in basket in USD
-    static func calculateUSDTotal(basket: [ShoppingItem]) -> Double {
+    //  calculate total price for items in basket
+    static func calculateTotal(basket: [ShoppingItem], fxRate: Double) -> Double {
         let usdTotal = basket.reduce(0, {(result:Double, shoppingItem:ShoppingItem) -> Double in
-            result + Double(shoppingItem.quantity) * shoppingItem.product.price
+            result + Double(shoppingItem.quantity) * shoppingItem.product.price * fxRate
         })
         
         return usdTotal
     }
     
-    static func calculatePrices(basket: [ShoppingItem], fxRates: [String: Double]) -> [String: Double] {
-        let usdTotal = calculateUSDTotal(basket: basket)
-        return Dictionary(uniqueKeysWithValues: fxRates.map { ccy, rate in
-            (String(ccy.dropFirst(3)), usdTotal * rate)
-        })
+    static func calculatePriceBreakdown(basket: [ShoppingItem], fxRate: Double, currencyCode: String) -> [String: String] {
+        let itemPriceTuples: [(String, String)] = basket.map{
+            (
+                $0.product.name,
+                State.formatPrice(
+                    price:$0.product.price * Double($0.quantity) * fxRate,
+                    currencyCode: currencyCode
+                )
+            )
+        }
+        
+        return Dictionary(uniqueKeysWithValues: itemPriceTuples)
     }
+    
+
+    // static func calculatePrices(basket: [ShoppingItem], fxRates: [String: Double]) -> [String: Double] {
+    //     let usdTotal = calculateUSDTotal(basket: basket)
+    //     return Dictionary(uniqueKeysWithValues: fxRates.map { ccy, rate in
+    //         (String(ccy.dropFirst(3)), usdTotal * rate)
+    //     })
+    // }
     
     static func formatPrice(price: Double, currencyCode: String) -> String {
         let formatter = Formatter.currencyFormatter(code: currencyCode)

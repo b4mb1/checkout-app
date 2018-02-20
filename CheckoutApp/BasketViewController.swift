@@ -93,10 +93,9 @@ extension BasketViewController: StoreSubscriber {
             return
         }
         
-        pickerView.items = Array(state.prices.keys)
-        total.text = state.currentPrice
-        subtotal.text = state.currentPrice
-        
+        pickerView.items = Array(state.availableCurrencies)
+        total.text = state.totalPriceString
+        subtotal.text = state.totalPriceString
     }
 }
 
