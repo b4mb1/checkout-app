@@ -45,6 +45,7 @@ class BasketViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
        super.viewWillDisappear(animated)
         animateBasketButton(isAppearing: true)
+        Store.shared.unsubscribe(self)
     }
 
     

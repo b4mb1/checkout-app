@@ -26,6 +26,11 @@ class MainViewController: UIViewController {
         Store.shared.propagate()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Store.shared.unsubscribe(self)
+    }
+    
     @objc func AddToBaksetTapped(_ sender: UIButton) {
         let row = sender.tag
         Store.shared.dispatch(action:Action.Increment(index: row))

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StoreSubscriber {
+protocol StoreSubscriber : class {
     func newState(_ state: State)
 }
 
@@ -34,6 +34,10 @@ class Store {
     
     func subscribe(_ newSubscriber: StoreSubscriber) {
         subscribers.append(newSubscriber)
+    }
+    
+    func unsubscribe(_ oldSubscriber: StoreSubscriber) {
+        subscribers = subscribers.filter{$0 !== oldSubscriber}
     }
     
     func propagate() {

@@ -68,7 +68,6 @@
 		F916C5A0202EE8A300AF2024 /* CheckoutAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutAppUITests.swift; sourceTree = "<group>"; };
 		F916C5A2202EE8A300AF2024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F916C5AE202EE94300AF2024 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		F916C5B0202EED6100AF2024 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F916C5B5202F4D9F00AF2024 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F93138742038871700FD3372 /* ProductListerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListerCell.swift; sourceTree = "<group>"; };
 		F93138752038871700FD3372 /* ProductListerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListerCell.xib; sourceTree = "<group>"; };
@@ -138,7 +137,6 @@
 				F916C587202EE8A300AF2024 /* Assets.xcassets */,
 				F916C589202EE8A300AF2024 /* LaunchScreen.storyboard */,
 				F916C58C202EE8A300AF2024 /* Info.plist */,
-				F916C5B0202EED6100AF2024 /* README.md */,
 			);
 			path = CheckoutApp;
 			sourceTree = "<group>";
