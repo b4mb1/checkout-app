@@ -24,10 +24,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductListerCell" id="KGk-i7-Jjw" customClass="ProductListerCell" customModule="CheckoutApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="270"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="290"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="269.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="289.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T4t-ba-nfr">
@@ -37,9 +37,9 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnA-Wk-mZZ" userLabel="AddToBasket">
-                        <rect key="frame" x="0.0" y="236" width="40" height="26"/>
+                        <rect key="frame" x="-12.5" y="248" width="50.5" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="aNa-1p-995"/>
+                            <constraint firstAttribute="width" constant="50" id="aNa-1p-995"/>
                             <constraint firstAttribute="height" constant="26" id="eG9-5f-OZd"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="27"/>
@@ -49,9 +49,9 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrO-rh-Iu4" userLabel="RemoveFromBasket">
-                        <rect key="frame" x="110" y="236" width="40" height="26"/>
+                        <rect key="frame" x="113.5" y="248" width="50" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="2Uz-a1-cD8"/>
+                            <constraint firstAttribute="width" constant="50" id="2Uz-a1-cD8"/>
                             <constraint firstAttribute="height" constant="26" id="61r-Fk-oCn"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="27"/>
@@ -61,31 +61,34 @@
                         </state>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="u7s-NT-5bC">
-                        <rect key="frame" x="0.0" y="187" width="150" height="44"/>
+                        <rect key="frame" x="0.0" y="190" width="150" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3x-oa-O8M">
-                                <rect key="frame" x="58.5" y="0.0" width="33" height="12"/>
+                                <rect key="frame" x="58.5" y="0.0" width="33" height="13.5"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
                                 <color key="textColor" red="0.8901960784313725" green="0.18431372549019609" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xG-Em-NYn">
-                                <rect key="frame" x="52.5" y="16" width="45" height="12"/>
+                                <rect key="frame" x="52.5" y="17.5" width="45" height="13"/>
                                 <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ee-Jn-X0P">
-                                <rect key="frame" x="60" y="32" width="30.5" height="12"/>
+                                <rect key="frame" x="60" y="34.5" width="30.5" height="13.5"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
                                 <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="kSc-zr-vbA"/>
+                        </constraints>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7l-gr-gu9">
-                        <rect key="frame" x="40" y="236" width="70" height="20"/>
-                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                        <rect key="frame" x="38" y="248" width="75.5" height="24.5"/>
+                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -93,17 +96,16 @@
                 <constraints>
                     <constraint firstItem="r7l-gr-gu9" firstAttribute="top" secondItem="cnA-Wk-mZZ" secondAttribute="top" id="8m8-Au-Qzm"/>
                     <constraint firstItem="NrO-rh-Iu4" firstAttribute="top" secondItem="cnA-Wk-mZZ" secondAttribute="top" id="C4b-bw-Av4"/>
-                    <constraint firstItem="cnA-Wk-mZZ" firstAttribute="leading" secondItem="u7s-NT-5bC" secondAttribute="leading" id="EgT-wT-SvI"/>
                     <constraint firstItem="T4t-ba-nfr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IKI-4p-43d"/>
+                    <constraint firstItem="r7l-gr-gu9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="KWq-ye-J7G"/>
                     <constraint firstItem="u7s-NT-5bC" firstAttribute="trailing" secondItem="T4t-ba-nfr" secondAttribute="trailing" id="Mxh-nW-z5N"/>
                     <constraint firstItem="T4t-ba-nfr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WqN-mV-JZ8"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="cnA-Wk-mZZ" secondAttribute="bottom" constant="-3" id="WuV-gu-EHY"/>
-                    <constraint firstItem="u7s-NT-5bC" firstAttribute="top" secondItem="T4t-ba-nfr" secondAttribute="bottom" constant="7" id="aX3-kZ-ONm"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="cnA-Wk-mZZ" secondAttribute="bottom" constant="5" id="WuV-gu-EHY"/>
+                    <constraint firstItem="u7s-NT-5bC" firstAttribute="top" secondItem="T4t-ba-nfr" secondAttribute="bottom" constant="10" id="aX3-kZ-ONm"/>
                     <constraint firstItem="u7s-NT-5bC" firstAttribute="leading" secondItem="T4t-ba-nfr" secondAttribute="leading" id="aiG-4d-mA4"/>
-                    <constraint firstItem="NrO-rh-Iu4" firstAttribute="trailing" secondItem="u7s-NT-5bC" secondAttribute="trailing" id="bIr-Fs-jyA"/>
                     <constraint firstItem="NrO-rh-Iu4" firstAttribute="leading" secondItem="r7l-gr-gu9" secondAttribute="trailing" id="nJP-Pc-fZ4"/>
                     <constraint firstAttribute="trailing" secondItem="T4t-ba-nfr" secondAttribute="trailing" id="q2q-FC-iJL"/>
-                    <constraint firstItem="cnA-Wk-mZZ" firstAttribute="top" secondItem="u7s-NT-5bC" secondAttribute="bottom" constant="5" id="qoO-XZ-RkQ"/>
+                    <constraint firstItem="cnA-Wk-mZZ" firstAttribute="top" secondItem="u7s-NT-5bC" secondAttribute="bottom" constant="10" id="qoO-XZ-RkQ"/>
                     <constraint firstItem="r7l-gr-gu9" firstAttribute="leading" secondItem="cnA-Wk-mZZ" secondAttribute="trailing" id="vK2-ZT-C0n"/>
                 </constraints>
             </tableViewCellContentView>

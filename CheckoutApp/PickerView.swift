@@ -61,8 +61,20 @@ extension PickerView: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return items[row]
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        guard let pickerLabel = view as? UILabel else {
+            let pickerLabel = UILabel()
+            pickerLabel.font = UIFont(name: "GillSans-SemiBold", size: 14)
+            pickerLabel.textAlignment = .center
+            pickerLabel.text = items[row]
+            
+            return pickerLabel
+        }
+        
+        return pickerLabel
+        
+        
     }
 }
 

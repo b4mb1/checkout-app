@@ -40,6 +40,7 @@ extension MainViewController: StoreSubscriber {
     func newState(_ state: State) {
         shoppingItems = state.basket
         collectionView?.reloadData()
+        self.title = state.totalPriceString
     }
 }
 
@@ -97,7 +98,7 @@ extension MainViewController : UICollectionViewDelegateFlowLayout {
         let contentWidth = view.frame.width - padding
         let width = contentWidth / columnCount
         
-        return CGSize(width: width, height: 1.8 * width)
+        return CGSize(width: width, height: 2 * width)
     }
     
     func collectionView(_ collectionView: UICollectionView,

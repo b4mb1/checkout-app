@@ -186,7 +186,7 @@ enum Product {
     var per : String {
         switch  self {
         case .peas: return "per 100 g"
-        case .eggs: return "per 10"
+        case .eggs: return "per 20"
         case .milk: return "each"
         case .beans: return "per 100 g"
         }

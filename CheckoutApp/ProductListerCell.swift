@@ -25,8 +25,10 @@ class ProductListerCell: UICollectionViewCell {
                 return
             }
             
+            let formatter = Formatter.currencyFormatter()
+            
             image?.image = UIImage(named: product.name)
-            price?.text = "\(product.price)"
+            price?.text = formatter.string(from: NSNumber(value:product.price))
             name?.text = product.name.uppercased()
             extra?.text = product.per
             self.quantity?.text = "\(quantity)"

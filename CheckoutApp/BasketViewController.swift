@@ -26,6 +26,7 @@ class BasketViewController: UIViewController {
         Store.shared.subscribe(self)
         Store.shared.propagate()
         setupTableView()
+        self.title = "YOUR CART"
         
         APIClient.shared.fetchRatesFor(Constants.API.currenciesValue) { rates, error in
             guard let rates = rates, !rates.quotes.isEmpty  else {
@@ -60,6 +61,7 @@ class BasketViewController: UIViewController {
     
     private func configureDropDown() {
         currencyDropDown.delegate = self
+        currencyDropDown.layer.borderColor = UIColor.blue.cgColor
     }
 
     private func currencyDidChange(_ currency: String, row: Int) {

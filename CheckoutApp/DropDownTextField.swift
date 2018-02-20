@@ -40,7 +40,7 @@ extension DropDownTextField {
     
     func expand(_ expand: Bool = true) {
         if (expand) {
-            containerHeightConstraint?.constant = 216
+            containerHeightConstraint?.constant = 170
         } else {
             containerHeightConstraint?.constant = 0
         }
