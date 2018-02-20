@@ -105,7 +105,8 @@ struct State {
     
     let currency: String
     let fxRate: Double
-    let priceBreakdown: [String: String]
+    // let priceBreakdown: [String: String]
+    let priceBreakdown: [(ShoppingItem, String)]
     
     init(basket: [ShoppingItem], fxRates: [String:Double], currency: String) {
         self.basket = basket
@@ -130,10 +131,11 @@ struct State {
         return usdTotal
     }
     
-    static func calculatePriceBreakdown(basket: [ShoppingItem], fxRate: Double, currencyCode: String) -> [String: String] {
-        let itemPriceTuples: [(String, String)] = basket.map{
+    static func calculatePriceBreakdown(basket: [ShoppingItem],
+                                        fxRate: Double, currencyCode: String) -> [(ShoppingItem, String)] {
+        let itemPriceTuples: [(ShoppingItem, String)] = basket.map{
             (
-                $0.product.name,
+                $0,
                 State.formatPrice(
                     price:$0.product.price * Double($0.quantity) * fxRate,
                     currencyCode: currencyCode
@@ -141,7 +143,7 @@ struct State {
             )
         }
         
-        return Dictionary(uniqueKeysWithValues: itemPriceTuples)
+        return itemPriceTuples
     }
     
 

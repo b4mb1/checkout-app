@@ -104,7 +104,8 @@ extension BasketViewController: StoreSubscriber {
         pickerView.items = Array(state.availableCurrencies)
         total.text = state.totalPriceString
         subtotal.text = state.totalPriceString
-        basketItems = [(state.basket[0], "12")]
+        // basketItems = [(state.basket[0], "12")]
+        basketItems = state.priceBreakdown
         
         tableView.reloadData()
     }
