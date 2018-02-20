@@ -17,12 +17,11 @@ class BasketTableViewCell: UITableViewCell {
         didSet {
             guard let product = shoppingItem?.0.product,
                 let quantity = shoppingItem?.0.quantity,
-                let currentPrice = shoppingItem?.1
-            else {
+                let currentPrice = shoppingItem?.1 else {
                     return
             }
             
-            item?.text = product.name + String(format: " x %d", quantity)
+            item?.text = product.name.capitalized + String(format: " x %d", quantity)
             price?.text = currentPrice
         }
     }

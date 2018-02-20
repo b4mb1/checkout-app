@@ -17,6 +17,7 @@ class BasketViewController: UIViewController {
     
     private var basketItems: [(ShoppingItem, String)] = []
     
+   //MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDropDown()
@@ -24,14 +25,20 @@ class BasketViewController: UIViewController {
         Store.shared.subscribe(self)
         Store.shared.propagate()
         setupTableView()
-        self.title = "YOUR CART"
+        setupTitle()
         
         APIClient.shared.fetchRatesFor(Constants.API.currenciesValue) { rates, error in
-            guard let rates = rates, !rates.quotes.isEmpty  else {
+           
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard let rates = rates, let quotes = rates.quotes, !quotes.isEmpty  else {
                 return
             }
 
-            Store.shared.dispatch(action: Action.UpdateRates(rates: rates.quotes))
+            Store.shared.dispatch(action: Action.UpdateRates(rates: quotes))
         }
     }
     
@@ -45,33 +52,8 @@ class BasketViewController: UIViewController {
         super.viewWillAppear(animated)
         animateBasketButton(isAppearing: false)
     }
-
-    private func configurePickerView() {
-        guard let pickerView = currencyDropDown.expandedView as? PickerView else {
-            return
-        }
-
-        pickerView.items = ["USD"]
-        pickerView.valueChanged = { [weak self] currency, row in
-            self?.currencyDidChange(currency, row: row)
-        }
-    }
     
-    private func configureDropDown() {
-        currencyDropDown.delegate = self
-        currencyDropDown.layer.borderColor = UIColor.blue.cgColor
-    }
-
-    private func currencyDidChange(_ currency: String, row: Int) {
-        
-        Store.shared.dispatch(action: Action.SelectCurrency(currency: currency))
-        self.currencyDropDown.text = currency
-        if let pickerView = currencyDropDown.expandedView as? PickerView {
-            pickerView.selectRow(row, inComponent: 0, animated: false)
-        }
-    }
-    
-    /// Expands/collapse pickerView
+    //MARK: Animations
     private func expand(textField: DropDownTextField?, expand: Bool = true) {
         if let element = textField {
             
@@ -93,6 +75,7 @@ class BasketViewController: UIViewController {
     }
 }
 
+//MARK: StoreSubscriber
 extension BasketViewController: StoreSubscriber {
     func newState(_ state: State) {
         guard let pickerView = currencyDropDown.expandedView as? PickerView else {
@@ -108,6 +91,7 @@ extension BasketViewController: StoreSubscriber {
     }
 }
 
+//MARK: UITextFieldDelegate
 extension BasketViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
@@ -123,12 +107,42 @@ extension BasketViewController: UITextFieldDelegate {
 
 //MARK: Helper
 extension BasketViewController {
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.register(BasketTableViewCell.nib, forCellReuseIdentifier: BasketTableViewCell.identifier)
     }
+
+    private func setupTitle(){
+        self.title = "YOUR CART"
+    }
+    
+    private func configurePickerView() {
+        guard let pickerView = currencyDropDown.expandedView as? PickerView else {
+            return
+        }
+        
+        pickerView.items = ["USD"]
+        pickerView.valueChanged = { [weak self] currency, row in
+            self?.currencyDidChange(currency, row: row)
+        }
+    }
+    
+    private func configureDropDown() {
+        currencyDropDown.delegate = self
+        currencyDropDown.layer.borderColor = UIColor.blue.cgColor
+    }
+    
+    private func currencyDidChange(_ currency: String, row: Int) {
+        
+        Store.shared.dispatch(action: Action.SelectCurrency(currency: currency))
+        self.currencyDropDown.text = currency
+        if let pickerView = currencyDropDown.expandedView as? PickerView {
+            pickerView.selectRow(row, inComponent: 0, animated: false)
+        }
+    }
 }
 
+//MARK: UITableViewDataSource
 extension BasketViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -144,7 +158,6 @@ extension BasketViewController: UITableViewDataSource {
         }
         
         cell.shoppingItem = item
-
         return cell
     }
 }

@@ -52,7 +52,8 @@ struct Formatter {
     }
     
     static func localeForCurrencyCode(code: String) -> Locale? {
-        guard let identifier = Locale.availableIdentifiers.first(where: { Locale(identifier: $0).currencyCode == code }) else { return nil}
+        guard let identifier = Locale.availableIdentifiers.first(where:
+            { Locale(identifier: $0).currencyCode == code }) else { return nil}
         return Locale(identifier: identifier)
     }
 }

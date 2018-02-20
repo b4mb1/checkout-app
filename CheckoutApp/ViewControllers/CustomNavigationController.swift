@@ -21,7 +21,6 @@ class CustomNavigationController: UINavigationController {
         setupBasketButton()
         setupBackButton()
         self.delegate = self
-
     }
 
     private func setupBasketButton() {
@@ -83,13 +82,13 @@ class CustomNavigationController: UINavigationController {
         viewController.navigationItem.leftBarButtonItem = backItem
     }
     
-    @objc func basketTapped() {
+    @objc private func basketTapped() {
         basketButton?.isHidden = true
         let basketViewController = UIStoryboard(name: Constants.Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: BasketViewController.identifier)
         self.pushViewController(basketViewController, animated: true)
     }
     
-    @objc func backButtonTapped() {
+    @objc private  func backButtonTapped() {
        self.popViewController(animated: true)
     }
     
@@ -105,6 +104,8 @@ class CustomNavigationController: UINavigationController {
     }
 }
 
+
+// MARK: UINavigationControllerDelegate
 extension CustomNavigationController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController,

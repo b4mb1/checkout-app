@@ -8,15 +8,17 @@
 
 import Foundation
 
-struct ExchangeRates: Codable {
+struct APIResponse: Codable {
     let success: Bool
-    let source: String
-    let quotes: [String:Double]
+    let source: String?
+    let quotes: [String:Double]?
+    let error : APIError?
     
     enum CodingKeys: String, CodingKey {
         case success
         case source
         case quotes
+        case error
     }
 }
 
@@ -28,6 +30,8 @@ struct APIError: Codable {
 enum AppError: Error {
     case urlError(reason: String)
     case objectSerialization(reason: String)
+    case JSONDecoding(reason: String)
+    case apiError(reason: String)
 }
 
 struct APIClient {
@@ -46,7 +50,7 @@ struct APIClient {
         return components?.url
     }
     
-    func fetchRatesFor(_ currencies: String, completionHandler: @escaping (ExchangeRates?, Error?) -> Void) {
+    func fetchRatesFor(_ currencies: String, completionHandler: @escaping (APIResponse?, Error?) -> Void) {
         
         let reason = Constants.Errors.self
         guard let url = buildURLWith(currencies) else {
@@ -74,10 +78,20 @@ struct APIClient {
             
             let decoder = JSONDecoder()
             do {
-                let rates = try decoder.decode(ExchangeRates.self, from: responseData)
-                completionHandler(rates, nil)
+                let response = try decoder.decode(APIResponse.self, from: responseData)
+            
+                if let apiError = response.error {
+                    let error = AppError.apiError(reason: apiError.info)
+                    completionHandler(nil, error)
+                } else if !response.success {
+                    let error = AppError.apiError(reason: reason.serverError)
+                    completionHandler(nil, error)
+                } else {
+                    completionHandler(response, nil)
+                }
+
             } catch {
-                print(error)
+                let error = AppError.JSONDecoding(reason: reason.invalidJSON)
                 completionHandler(nil, error)
             }
         }

@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
                                                  bottom: 10.0,
                                                  right: 10.0)
 
+    // MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -36,6 +37,7 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: StoreSubscriber
 extension MainViewController: StoreSubscriber {
     func newState(_ state: State) {
         shoppingItems = state.basket
@@ -54,6 +56,7 @@ extension MainViewController {
     }
 }
 
+// MARK: UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
@@ -61,7 +64,7 @@ extension MainViewController: UICollectionViewDelegate {
     }
 }
 
-
+// MARK: UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -89,7 +92,8 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
-extension MainViewController : UICollectionViewDelegateFlowLayout {
+// MARK: UICollectionViewDelegateFlowLayout
+extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

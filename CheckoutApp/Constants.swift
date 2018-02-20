@@ -26,6 +26,8 @@ struct Constants {
     struct Errors {
         static let invalidURL = "Provided URL is invalid"
         static let invalidData = "Could not deserialize the data"
+        static let invalidJSON = "Could not parse the JSON"
+        static let serverError = "Unknown server error"
     }
     
     struct ImageNames {

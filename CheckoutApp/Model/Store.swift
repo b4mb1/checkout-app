@@ -27,6 +27,7 @@ class Store {
         self.state = State.defaultState()
     }
     
+    //MARK: Methods with internal access level
     func dispatch(action: Action) {
         state = reducer(state, action)
     }
