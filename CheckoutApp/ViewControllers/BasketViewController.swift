@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias BasketItem = (ShoppingItem, String)
-
 class BasketViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -17,7 +15,7 @@ class BasketViewController: UIViewController {
     @IBOutlet weak var subtotal: UILabel!
     @IBOutlet weak var currencyDropDown: DropDownTextField!
     
-    private var basketItems: [BasketItem] = []
+    private var basketItems: [(ShoppingItem, String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,8 +102,7 @@ extension BasketViewController: StoreSubscriber {
         pickerView.items = Array(state.availableCurrencies)
         total.text = state.totalPriceString
         subtotal.text = state.totalPriceString
-        // basketItems = [(state.basket[0], "12")]
-        basketItems = state.priceBreakdown
+        basketItems = state.priceBreakdownStrings
         
         tableView.reloadData()
     }

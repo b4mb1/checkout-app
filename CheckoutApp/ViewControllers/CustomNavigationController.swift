@@ -94,7 +94,6 @@ class CustomNavigationController: UINavigationController {
     }
     
     // MARK: methods with internal access level
-    
     internal func animateBasketButton(isAppearing: Bool) {
         guard let button = basketButton else {
             return

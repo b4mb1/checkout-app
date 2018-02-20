@@ -13,7 +13,7 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var item: UILabel!
     @IBOutlet weak var price: UILabel!
     
-    var shoppingItem: BasketItem? {
+    var shoppingItem: (ShoppingItem, String)? {
         didSet {
             guard let product = shoppingItem?.0.product,
                 let quantity = shoppingItem?.0.quantity,

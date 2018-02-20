@@ -10,7 +10,7 @@
 		F914ED942038FCCC000ED4DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED932038FCCC000ED4DF /* Constants.swift */; };
 		F914ED9620398A59000ED4DF /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED9520398A59000ED4DF /* CustomNavigationController.swift */; };
 		F914ED982039AB05000ED4DF /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED972039AB05000ED4DF /* BasketViewController.swift */; };
-		F914ED9A2039CC06000ED4DF /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED992039CC06000ED4DF /* APIModel.swift */; };
+		F914ED9A2039CC06000ED4DF /* FxAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED992039CC06000ED4DF /* FxAPIClient.swift */; };
 		F914ED9C203AE43A000ED4DF /* DropDownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914ED9B203AE439000ED4DF /* DropDownTextField.swift */; };
 		F916C581202EE8A300AF2024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C580202EE8A300AF2024 /* AppDelegate.swift */; };
 		F916C583202EE8A300AF2024 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C582202EE8A300AF2024 /* MainViewController.swift */; };
@@ -23,6 +23,9 @@
 		F916C5B6202F4D9F00AF2024 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916C5B5202F4D9F00AF2024 /* Utils.swift */; };
 		F93138762038871700FD3372 /* ProductListerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93138742038871700FD3372 /* ProductListerCell.swift */; };
 		F93138772038871700FD3372 /* ProductListerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93138752038871700FD3372 /* ProductListerCell.xib */; };
+		F9DAB639203C960A00C170C0 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB638203C960A00C170C0 /* State.swift */; };
+		F9DAB63B203C964C00C170C0 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB63A203C964C00C170C0 /* Reducers.swift */; };
+		F9DAB63D203C96BF00C170C0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB63C203C96BF00C170C0 /* Store.swift */; };
 		F9F23185203B156000CC0B74 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F23184203B156000CC0B74 /* PickerView.swift */; };
 		F9F23188203C38F500CC0B74 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F23186203C38F500CC0B74 /* BasketTableViewCell.swift */; };
 		F9F23189203C38F500CC0B74 /* BasketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F23187203C38F500CC0B74 /* BasketTableViewCell.xib */; };
@@ -49,7 +52,7 @@
 		F914ED932038FCCC000ED4DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F914ED9520398A59000ED4DF /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		F914ED972039AB05000ED4DF /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
-		F914ED992039CC06000ED4DF /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		F914ED992039CC06000ED4DF /* FxAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FxAPIClient.swift; sourceTree = "<group>"; };
 		F914ED9B203AE439000ED4DF /* DropDownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextField.swift; sourceTree = "<group>"; };
 		F916C57D202EE8A300AF2024 /* CheckoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F916C580202EE8A300AF2024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +72,9 @@
 		F916C5B5202F4D9F00AF2024 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F93138742038871700FD3372 /* ProductListerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListerCell.swift; sourceTree = "<group>"; };
 		F93138752038871700FD3372 /* ProductListerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListerCell.xib; sourceTree = "<group>"; };
+		F9DAB638203C960A00C170C0 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		F9DAB63A203C964C00C170C0 /* Reducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
+		F9DAB63C203C96BF00C170C0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F9F23184203B156000CC0B74 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		F9F23186203C38F500CC0B74 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
 		F9F23187203C38F500CC0B74 /* BasketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketTableViewCell.xib; sourceTree = "<group>"; };
@@ -122,19 +128,11 @@
 		F916C57F202EE8A300AF2024 /* CheckoutApp */ = {
 			isa = PBXGroup;
 			children = (
+				F9DAB637203C95A000C170C0 /* Model */,
+				F9DAB636203C956100C170C0 /* ViewControllers */,
+				F9DAB634203C952A00C170C0 /* View */,
 				F916C580202EE8A300AF2024 /* AppDelegate.swift */,
-				F916C5AE202EE94300AF2024 /* Model.swift */,
 				F914ED932038FCCC000ED4DF /* Constants.swift */,
-				F914ED992039CC06000ED4DF /* APIModel.swift */,
-				F914ED9B203AE439000ED4DF /* DropDownTextField.swift */,
-				F9F23184203B156000CC0B74 /* PickerView.swift */,
-				F93138742038871700FD3372 /* ProductListerCell.swift */,
-				F914ED972039AB05000ED4DF /* BasketViewController.swift */,
-				F914ED9520398A59000ED4DF /* CustomNavigationController.swift */,
-				F93138752038871700FD3372 /* ProductListerCell.xib */,
-				F9F23186203C38F500CC0B74 /* BasketTableViewCell.swift */,
-				F9F23187203C38F500CC0B74 /* BasketTableViewCell.xib */,
-				F916C582202EE8A300AF2024 /* MainViewController.swift */,
 				F916C5B5202F4D9F00AF2024 /* Utils.swift */,
 				F916C584202EE8A300AF2024 /* Main.storyboard */,
 				F916C587202EE8A300AF2024 /* Assets.xcassets */,
@@ -161,6 +159,41 @@
 				F916C5A2202EE8A300AF2024 /* Info.plist */,
 			);
 			path = CheckoutAppUITests;
+			sourceTree = "<group>";
+		};
+		F9DAB634203C952A00C170C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F9F23184203B156000CC0B74 /* PickerView.swift */,
+				F93138742038871700FD3372 /* ProductListerCell.swift */,
+				F93138752038871700FD3372 /* ProductListerCell.xib */,
+				F9F23186203C38F500CC0B74 /* BasketTableViewCell.swift */,
+				F914ED9B203AE439000ED4DF /* DropDownTextField.swift */,
+				F9F23187203C38F500CC0B74 /* BasketTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F9DAB636203C956100C170C0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F914ED972039AB05000ED4DF /* BasketViewController.swift */,
+				F916C582202EE8A300AF2024 /* MainViewController.swift */,
+				F914ED9520398A59000ED4DF /* CustomNavigationController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F9DAB637203C95A000C170C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F914ED992039CC06000ED4DF /* FxAPIClient.swift */,
+				F916C5AE202EE94300AF2024 /* Model.swift */,
+				F9DAB638203C960A00C170C0 /* State.swift */,
+				F9DAB63A203C964C00C170C0 /* Reducers.swift */,
+				F9DAB63C203C96BF00C170C0 /* Store.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,15 +332,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9DAB63D203C96BF00C170C0 /* Store.swift in Sources */,
 				F916C583202EE8A300AF2024 /* MainViewController.swift in Sources */,
 				F9F23188203C38F500CC0B74 /* BasketTableViewCell.swift in Sources */,
-				F914ED9A2039CC06000ED4DF /* APIModel.swift in Sources */,
+				F914ED9A2039CC06000ED4DF /* FxAPIClient.swift in Sources */,
 				F916C581202EE8A300AF2024 /* AppDelegate.swift in Sources */,
 				F916C5AF202EE94300AF2024 /* Model.swift in Sources */,
 				F914ED9C203AE43A000ED4DF /* DropDownTextField.swift in Sources */,
+				F9DAB63B203C964C00C170C0 /* Reducers.swift in Sources */,
 				F93138762038871700FD3372 /* ProductListerCell.swift in Sources */,
 				F916C5B6202F4D9F00AF2024 /* Utils.swift in Sources */,
 				F914ED942038FCCC000ED4DF /* Constants.swift in Sources */,
+				F9DAB639203C960A00C170C0 /* State.swift in Sources */,
 				F914ED982039AB05000ED4DF /* BasketViewController.swift in Sources */,
 				F9F23185203B156000CC0B74 /* PickerView.swift in Sources */,
 				F914ED9620398A59000ED4DF /* CustomNavigationController.swift in Sources */,
