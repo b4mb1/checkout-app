@@ -24,6 +24,8 @@
 		F93138762038871700FD3372 /* ProductListerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93138742038871700FD3372 /* ProductListerCell.swift */; };
 		F93138772038871700FD3372 /* ProductListerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93138752038871700FD3372 /* ProductListerCell.xib */; };
 		F9F23185203B156000CC0B74 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F23184203B156000CC0B74 /* PickerView.swift */; };
+		F9F23188203C38F500CC0B74 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F23186203C38F500CC0B74 /* BasketTableViewCell.swift */; };
+		F9F23189203C38F500CC0B74 /* BasketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F23187203C38F500CC0B74 /* BasketTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		F93138742038871700FD3372 /* ProductListerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListerCell.swift; sourceTree = "<group>"; };
 		F93138752038871700FD3372 /* ProductListerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListerCell.xib; sourceTree = "<group>"; };
 		F9F23184203B156000CC0B74 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		F9F23186203C38F500CC0B74 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
+		F9F23187203C38F500CC0B74 /* BasketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				F914ED972039AB05000ED4DF /* BasketViewController.swift */,
 				F914ED9520398A59000ED4DF /* CustomNavigationController.swift */,
 				F93138752038871700FD3372 /* ProductListerCell.xib */,
+				F9F23186203C38F500CC0B74 /* BasketTableViewCell.swift */,
+				F9F23187203C38F500CC0B74 /* BasketTableViewCell.xib */,
 				F916C582202EE8A300AF2024 /* MainViewController.swift */,
 				F916C5B5202F4D9F00AF2024 /* Utils.swift */,
 				F916C584202EE8A300AF2024 /* Main.storyboard */,
@@ -268,6 +274,7 @@
 				F916C588202EE8A300AF2024 /* Assets.xcassets in Resources */,
 				F93138772038871700FD3372 /* ProductListerCell.xib in Resources */,
 				F916C586202EE8A300AF2024 /* Main.storyboard in Resources */,
+				F9F23189203C38F500CC0B74 /* BasketTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F916C583202EE8A300AF2024 /* MainViewController.swift in Sources */,
+				F9F23188203C38F500CC0B74 /* BasketTableViewCell.swift in Sources */,
 				F914ED9A2039CC06000ED4DF /* APIModel.swift in Sources */,
 				F916C581202EE8A300AF2024 /* AppDelegate.swift in Sources */,
 				F916C5AF202EE94300AF2024 /* Model.swift in Sources */,
