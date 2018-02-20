@@ -10,16 +10,23 @@ import UIKit
 
 class BasketViewController: UIViewController {
 
+    @IBOutlet weak var total: UILabel!
+    @IBOutlet weak var subtotal: UILabel!
     @IBOutlet weak var currencyDropDown: DropDownTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDropDown()
         configurePickerView()
-        setupStore()
+        Store.shared.subscribe(self)
+        Store.shared.propagate()
         
-        DataProvider.shared.fetchRatesFor( , completionHandler: <#T##(ExchangeRates?, Error?) -> Void#>) {
-            
+        APIClient.shared.fetchRatesFor(Constants.API.currenciesValue) { rates, error in
+            guard let rates = rates, !rates.quotes.isEmpty  else {
+                return
+            }
+
+            Store.shared.dispatch(action: Action.UpdateRates(rates: rates.quotes))
         }
     }
     
@@ -39,7 +46,7 @@ class BasketViewController: UIViewController {
             return
         }
 
-        pickerView.items = ["CHF", "EUR", "FEF" ,"WEFWe", "WEF", "ERR"]
+        pickerView.items = ["USD"]
         pickerView.valueChanged = { [weak self] currency, row in
             self?.currencyDidChange(currency, row: row)
         }
@@ -48,13 +55,10 @@ class BasketViewController: UIViewController {
     private func configureDropDown() {
         currencyDropDown.delegate = self
     }
-    
-    private func setupStore(){
-        let store = Store.shared
-        store.subscribe(self)
-    }
-    
+
     private func currencyDidChange(_ currency: String, row: Int) {
+        
+        Store.shared.dispatch(action: Action.SelectCurrency(currency: currency))
         self.currencyDropDown.text = currency
         if let pickerView = currencyDropDown.expandedView as? PickerView {
             pickerView.selectRow(row, inComponent: 0, animated: false)
@@ -85,6 +89,13 @@ class BasketViewController: UIViewController {
 
 extension BasketViewController: StoreSubscriber {
     func newState(_ state: State) {
+        guard let pickerView = currencyDropDown.expandedView as? PickerView else {
+            return
+        }
+        
+        pickerView.items = Array(state.prices.keys)
+        total.text = state.currentPrice
+        subtotal.text = state.currentPrice
         
     }
 }

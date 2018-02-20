@@ -222,6 +222,8 @@
                     </view>
                     <connections>
                         <outlet property="currencyDropDown" destination="gK0-4i-ZXv" id="q2P-jG-gE5"/>
+                        <outlet property="subtotal" destination="lcE-xc-yMF" id="0T5-qp-Kz5"/>
+                        <outlet property="total" destination="a1z-yR-I7C" id="pU9-WP-ppO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yex-9b-N5M" userLabel="First Responder" sceneMemberID="firstResponder"/>

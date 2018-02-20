@@ -30,26 +30,26 @@ enum AppError: Error {
     case objectSerialization(reason: String)
 }
 
-struct DataProvider {
-    static let shared = DataProvider()
+struct APIClient {
+    static let shared = APIClient()
     
-    private func buildURL() -> URL? {
+    private func buildURLWith(_ currencies: String) -> URL? {
         var components =  URLComponents(string: Constants.API.baseURL)
         
         let api = Constants.API.self
         let key = URLQueryItem(name: api.key, value: api.keyValue)
-        let currencies = URLQueryItem(name: api.curr, value: api.currValue)
+        let currencies = URLQueryItem(name: api.currencies, value: currencies)
         let source = URLQueryItem(name: api.source, value: api.sourceValue)
         let format = URLQueryItem(name: api.format, value: api.formatValue)
         
-        components?.queryItems = [key,currencies,source,format]
+        components?.queryItems = [key, currencies, source, format]
         return components?.url
     }
     
-    func fetchRatesFor(_ currencies: [String], completionHandler: @escaping (ExchangeRates?, Error?) -> Void) {
+    func fetchRatesFor(_ currencies: String, completionHandler: @escaping (ExchangeRates?, Error?) -> Void) {
         
         let reason = Constants.Errors.self
-        guard let url = buildURL() else {
+        guard let url = buildURLWith(currencies) else {
             let error = AppError.urlError(reason: reason.invalidURL)
             completionHandler(nil, error)
             return

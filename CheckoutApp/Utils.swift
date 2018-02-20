@@ -39,12 +39,17 @@ extension Collection {
 }
 
 struct Formatter {
-    static func currencyFormatter(locale: Locale = Locale(identifier: "en_US")) -> NumberFormatter {
+    static func currencyFormatter(code: String = "USD") -> NumberFormatter {
         let formatter = NumberFormatter()
+        let locale = localeForCurrencyCode(code: code)
         formatter.locale = locale
         formatter.numberStyle = .currency
-        formatter.currencySymbol = locale.currencySymbol
+        formatter.currencySymbol = locale?.currencySymbol
         return formatter
     }
+    
+    static func localeForCurrencyCode(code: String) -> Locale? {
+        guard let identifier = Locale.availableIdentifiers.first(where: { Locale(identifier: $0).currencyCode == code }) else { return nil}
+        return Locale(identifier: identifier)
+    }
 }
-

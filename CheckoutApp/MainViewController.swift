@@ -11,8 +11,6 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak private var collectionView: UICollectionView!
     
-    var dispatch: ((Action) -> ())!
-
     private var shoppingItems: [ShoppingItem]?
     private let columnCount: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 20.0,
@@ -23,23 +21,23 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        Store.shared.subscribe(self)
+        Store.shared.propagate()
     }
     
     @objc func AddToBaksetTapped(_ sender: UIButton) {
         let row = sender.tag
-        dispatch(Action.Increment(index: row))
+        Store.shared.dispatch(action:Action.Increment(index: row))
     }
     
     @objc func RemoveFromBaksetTapped(_ sender: UIButton) {
         let row = sender.tag
-        dispatch(Action.Decrement(index: row))
+        Store.shared.dispatch(action:Action.Decrement(index: row))
     }
 }
 
 extension MainViewController: StoreSubscriber {
     func newState(_ state: State) {
-        print("new state passed")
-        
         shoppingItems = state.basket
         collectionView?.reloadData()
     }
