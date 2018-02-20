@@ -12,7 +12,6 @@ protocol StoreSubscriber {
     func newState(_ state: State)
 }
 
-
 class Store {
     private var reducer: Reducer
     private(set) var state: State {
