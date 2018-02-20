@@ -12,15 +12,18 @@ class BasketTableViewCell: UITableViewCell {
 
     @IBOutlet weak var item: UILabel!
     @IBOutlet weak var price: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    var shoppingItem: BasketItem? {
+        didSet {
+            guard let product = shoppingItem?.0.product,
+                let quantity = shoppingItem?.0.quantity,
+                let currentPrice = shoppingItem?.1
+            else {
+                    return
+            }
+            
+            item?.text = product.name + String(format: " x %d", quantity)
+            price?.text = currentPrice
+        }
+    }
 }

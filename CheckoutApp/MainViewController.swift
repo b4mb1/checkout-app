@@ -11,7 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak private var collectionView: UICollectionView!
     
-    private var shoppingItems: [ShoppingItem]?
+    private var shoppingItems: [ShoppingItem] = []
     private let columnCount: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 20.0,
                                                  left: 10.0,
@@ -65,13 +65,13 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         
-        return shoppingItems?.count ?? 0
+        return shoppingItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let item =  shoppingItems?[safe:indexPath.row],
+        guard let item =  shoppingItems[safe:indexPath.row],
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductListerCell.identifier,
                                                           for: indexPath) as? ProductListerCell else {
                                                             

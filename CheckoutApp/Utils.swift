@@ -27,6 +27,9 @@ extension UIIdentifiable {
 extension UICollectionViewCell: UIIdentifiable {
 }
 
+extension UITableViewCell: UIIdentifiable {
+}
+
 extension UIViewController: UIIdentifiable {
 }
 

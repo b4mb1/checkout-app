@@ -32,8 +32,4 @@ class ProductListerCell: UICollectionViewCell {
             self.quantity?.text = "\(quantity)"
         }
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }

@@ -81,7 +81,9 @@ class Store {
     }
     
     func propagate() {
-        subscribers.forEach { $0.newState(state) }
+        DispatchQueue.main.async {
+            self.subscribers.forEach { $0.newState(self.state) }
+        }
     }
 }
 
