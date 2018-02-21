@@ -22,8 +22,6 @@ class BasketViewController: UIViewController {
         super.viewDidLoad()
         configureDropDown()
         configurePickerView()
-        Store.shared.subscribe(self)
-        Store.shared.propagate()
         setupTableView()
         setupTitle()
         
@@ -52,6 +50,8 @@ class BasketViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateBasketButton(isAppearing: false)
+        Store.shared.subscribe(self)
+        Store.shared.propagate()
     }
     
     //MARK: Animations
